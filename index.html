@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>NY Times Spelling Bee Solver</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel=icon href="favicon.ico" type="image/x-icon">
+	<link rel=stylesheet href="main.css" type="text/css">
+	
+</head>
+
+<body>
+<h1>NY Times Spelling Bee Game Solver</h1>
+<div id="#navbar">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><h2 style="display: inline;">|</h2></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</div>
+<h3>Using the Solver</h3>
+
+<p>Enter the puzzle&#39;s required center letter in the center square of the solver. 
+Enter the 6 perimeter letters in any order. Find every word in the 
+<a href="https://www.nytimes.com/puzzles/spelling-bee">New York Times Spelling Bee puzzle</a> and achieve Queen Bee.</p>
+<br><br><br>
+<center>
+<div class="wrapper">
+<div class="rotate">
+<table>
+	<tr>
+		<td><div class="content"></div></td>
+		<td>
+			<div class="content">
+				<div class="table">
+					<div class="table-cell">
+						<input type=text class=text id=letter0 maxlength="1">
+					</div>
+				</div>
+			</div>
+		</td>
+		<td><div class="content"></div></td>
+		<td><div class="content">
+				<div class="table">
+					<div class="table-cell">
+						<input type=text class=text id=letter1 maxlength="1">
+					</div>
+				</div>
+			</div></td>
+		<td><div class="content"></div></td>
+	</tr>
+	<tr>
+		<td>
+			<div class="content">
+				<div class="table">
+					<div class="table-cell">
+						<input type=text class=text id=letter2 maxlength="1">
+					</div>
+				</div>
+			</div>
+		</td>
+		<td><div class="content"></div></td>
+		<td>
+			<div class="content">
+				<div class="table">
+					<div class="table-cell">
+						<input type=text class=text id=requiredChar autofocus maxlength="1">
+					</div>
+				</div>
+			</div>
+		</td>
+		<td><div class="content"></div></td>
+		<td>
+			<div class="content">
+				<div class="table">
+					<div class="table-cell">
+						<input type=text class=text id=letter3 maxlength="1">
+					</div>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+	
+		<td><div class="content"></div></td>
+		
+		<td>
+			<div class="content">
+				<div class="table">
+					<div class="table-cell">
+						<input type=text class=text id=letter4 maxlength="1">
+					</div>
+				</div>
+			</div>
+		</td>
+		
+		<td><div class="content"></div></td>
+		
+		<td>
+			<div class="content">
+				<div class="table">
+					<div class="table-cell">
+						<input type=text class=text id=letter5 maxlength="1">
+					</div>
+				</div>
+			</div>
+		</td>
+		
+		<td><div class="content"></div></td>
+	</tr>
+</table>
+</div>
+</div><br>
+<INPUT type=button class=button VALUE="Solve" onClick="getFile()"><br>
+</center><br><br><br>
+<p id=output></p>
+</form>
+</body>
+
+<script language="javascript">
+
+String.prototype.format = function() {
+  a = this;
+  for (k in arguments) {
+    a = a.replace("{" + k + "}", arguments[k])
+  }
+  return a
+}
+
+function getFile()
+  { 
+  	filePath = "Dictionaries/feb2_clean.txt";
+	fetch(filePath)
+  .then(function(response) {
+    return response.text();
+  })
+  .then(function(myText) {
+    calculate(myText);
+  });
+}
+
+function calculate(vocab) {
+	
+	vocab = vocab.toLowerCase().split("\n");
+	
+	var wordsList = new Array;
+	
+	for(var i = 0; i < vocab.length; i++) {
+		wordsList.push(String(vocab[i]).trim());
+	}
+	
+	var foundWords = new Array;
+	
+	var requiredLetter = document.getElementById("requiredChar").value.toLowerCase();
+	var validChars = new Array;
+	for(var i = 0; i < 6; i++) {
+		validChars.push(document.getElementById("letter{0}".format(i)).value.toLowerCase());
+	}
+	
+	validChars.push(requiredLetter);
+	var matchStr = "^[" + validChars.join('') + "]{4,}$";
+	var re = new RegExp(matchStr, 'i');
+	
+	for(var w = 0; w < wordsList.length; w++) {
+		if(wordsList[w].includes(requiredLetter)) {
+			if(re.test(wordsList[w])) {
+				foundWords.push(wordsList[w]);
+			}
+		}
+	}
+	
+	var print = foundWords.join('<br />');
+	document.getElementById('output').innerHTML = print;
+}
+
+</script>
+
+</html>

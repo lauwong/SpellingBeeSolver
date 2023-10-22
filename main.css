@@ -1,0 +1,238 @@
+table {
+	width: 30%;
+}
+td {
+	width: 10%;
+	position: relative;
+}
+td:after {
+	content: '';
+	display: block;
+	margin-top: 175%;
+}
+td .content {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	transform: rotate(-30deg);
+}
+
+.table{
+	display:table;
+	height:100%;
+	width:100%;
+}
+
+.table-cell {
+	display:table-cell;
+	vertical-align:middle;
+	text-align: center;
+	height:100%;
+	width:100%;
+/* 		background: gold; */
+}
+
+input {
+	-webkit-appearance: none;
+}
+
+input[type=text] {
+	width: 7vw;
+	height: 6.7vw;
+	border-radius: 5px;
+	border-style: solid;
+	outline: none;
+	font-size: 4vw;
+	text-align: center;
+	text-transform: uppercase;
+	border-color: #B3B3B3;
+}
+
+#requiredChar {
+	border-color: gold;
+}
+
+.rotate {
+	transform: rotate(30deg) translateX(-0.5vw) translateY(2vw);
+}
+
+.wrapper {
+	overflow: hidden;
+	height: 33vw;
+}
+
+input[type=button] {
+	background-color: gold;
+	border: none;
+	color: black;
+	padding: 0.75vw 1.5vh;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 1.5vw;
+	outline: 0;
+	margin: 10px;
+}
+
+
+#output {
+	font-size: 16px;
+	font-family: "Lucida Grande";
+	column-width: 150px;
+	margin-left: 2%;
+}
+
+.button:active {
+	background-color: #EEC900;
+}
+
+@font-face {
+	font-family: "NYTimes";
+	src: url("Fonts/OldeEnglish.ttf");
+	
+}
+
+@font-face {
+	font-family: "Kalos Sans";
+	src: url("Fonts/Kalos.ttf");
+}
+
+@font-face {
+	font-family: "Old Newspaper";
+	src: url("Fonts/OldNewspaper.ttf");
+}
+
+h1 {
+	font-family: "NYTimes";
+	font-size: 6vw;
+	text-align: center;
+}
+
+/* 
+.select-style {
+	border: 1px solid #ccc;
+	width: 26vw;
+	border-radius: 0.3vw;
+	overflow: hidden;
+	background: #fafafa url("https://upload.wikimedia.org/wikipedia/commons/e/ec/Angle_down_font_awesome.svg") no-repeat 99% 50%;
+	background-size: 2vw;
+	margin: 2vw;
+}
+
+.select-style select {
+	padding: 0.5vw 0.8vw;
+	width: 130%;
+	border: none;
+	box-shadow: none;
+	background: transparent;
+	background-image: none;
+	-webkit-appearance: none;
+}
+
+.select-style select:focus {
+	outline: none;
+}
+
+select {
+	font-size: 1.25vw;
+	vertical-align: middle;
+}
+ */
+
+@media only screen and (max-device-width: 480px) {
+	table {
+		width: 58%;
+	}
+	
+	input {
+		padding: 0;
+	}
+	
+	input[type=text] {
+		border-width: thin;
+		width: 15vw;
+		height: 13.5vw;
+		border-color: #B3B3B3;
+	}
+	
+/* 
+	.select-style {
+		width: 70vw;
+		height: 7vw;
+		background-size: 7vw;
+		margin: 5vw;
+	}
+	
+	select {
+		font-size: 4.5vw;
+	}
+ */
+	
+	input[type=button] {
+		width: 16vw;
+		height: 10vw;
+		font-size: 4vw;
+	}
+	
+	.rotate {
+		transform: rotate(30deg) translateX(-2vw) translateY(3vw);
+	}
+	
+	.wrapper {
+		height: 60vw;
+	}
+	
+	#requiredChar {
+		border-color: gold;
+	}
+}
+
+#navbar {
+	margin: 0 auto;
+	display: inline-block;
+}
+
+ul {
+	margin-top: -1vw;
+	list-style-type: none;
+	text-align: center;
+}
+
+li {
+	display: inline;
+}
+
+li a {
+	font-family: "Old Newspaper";
+	font-size: 20px;
+	text-decoration: none;
+	color: black;
+}
+
+li a:hover {
+	color: #595959;
+}
+
+
+li a:active {
+	color: #A1A1A1;
+}
+
+p {
+	font-family: "Lucida Grande";
+}
+
+h3 {
+	font-family: "Kalos Sans";
+	font-size: 25px;
+	margin-bottom: -1vw;
+}
+
+img {
+	border-style: solid;
+	border-width: 2px;
+	border-color: gold;
+	margin: 10px;
+}
